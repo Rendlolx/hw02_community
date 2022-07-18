@@ -1,8 +1,8 @@
 from django.shortcuts import get_object_or_404, render
 
-from .models import Post, Group
+from .models import Group, Post
 
-# Create your views here.
+
 def index(request):
     template_main = 'posts/index.html'
     posts = Post.objects.order_by('-pub_date')[:10]
