@@ -1,4 +1,3 @@
-from attr import field
 from django import template
 
 register = template.Library()
