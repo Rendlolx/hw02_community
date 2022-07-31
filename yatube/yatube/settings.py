@@ -127,3 +127,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'posts:main'
 LOGOUT_REDIRECT_URL = 'posts:main'
+
+# подкидываем движок filebased.EmailBackend для эмуляции почты
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+
+#Указываем директорию хранения файлов писем
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
