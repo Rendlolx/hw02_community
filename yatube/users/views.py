@@ -5,7 +5,7 @@ from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 
 #Импортиуем класс формы, чтобы сослаться на неё во view-классе
-from .forms import CreationForm, PasswordChangeForm, PasswordResetForm
+from .forms import CreationForm, PasswordChangeForm, ChangePasswordAfterReset
 
 
 class SignUp(CreateView):
@@ -19,5 +19,3 @@ class ChangePassword(UpdateView):
     form_class = PasswordChangeForm
     success_url = reverse_lazy('posts:main')
     template_name = 'users/password_change_form.html'
-
-
