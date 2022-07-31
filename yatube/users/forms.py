@@ -1,5 +1,9 @@
+from django import forms
+
+from .models import ChangePasswordAfterReset
+
 from django.contrib.auth.forms import (
-    UserChangeForm, UserCreationForm, PasswordResetForm
+    UserChangeForm, UserCreationForm
 )
 from django.contrib.auth import get_user_model
 
@@ -26,4 +30,3 @@ class PasswordChangeForm(UserChangeForm):
             'password',
             'password'
         )
-        
