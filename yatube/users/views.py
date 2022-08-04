@@ -5,7 +5,7 @@ from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 
 #Импортиуем класс формы, чтобы сослаться на неё во view-классе
-from .forms import CreationForm, PasswordChangeForm, ChangePasswordAfterReset
+from .forms import CreationForm, PasswordChangeForm
 
 
 class SignUp(CreateView):
