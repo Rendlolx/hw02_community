@@ -1,8 +1,8 @@
-from django.shortcuts import get_object_or_404, get_list_or_404, render
-
+from django.shortcuts import get_object_or_404, get_list_or_404, render, redirect
 from django.core.paginator import Paginator
-
 from .models import Group, Post, User
+from .forms import PostForm
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -56,5 +56,35 @@ def post_detail(request, post_id):
     context = {
         'post': post,
         'post_count': post_count
+    }
+    return render(request, template_name, context)
+
+
+@login_required
+def post_create(request):
+    template_name = 'posts/create_post.html'
+    form = PostForm(request.POST)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.author = request.user
+        post.save()
+        return redirect('posts:profile', username=post.author.username)
+    context = {
+        'form': form
+    }
+    return render(request, template_name, context)
+
+
+@login_required
+def post_edit(request):
+    template_name = 'posts/create_post.html'
+    form = PostForm(request.POST)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.author = request.user
+        post.save()
+        return redirect('posts:profile', username=request.user)
+    context = {
+        'form': form
     }
     return render(request, template_name, context)
