@@ -52,3 +52,11 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.text
+
+
+class Post_create(models.Model):
+    text = models.TextField()
+    group = models.CharField(
+        max_length=50, 
+        blank=True
+    )
