@@ -52,7 +52,9 @@ def profile(request, username):
 def post_detail(request, post_id):
     template_name = 'posts/post_detail.html'
     post = get_object_or_404(Post, pk=post_id)
+    post_count = Post.objects.filter(author=post_id).all().count()
     context = {
-        'post': post
+        'post': post,
+        'post_count': post_count
     }
     return render(request, template_name, context)
